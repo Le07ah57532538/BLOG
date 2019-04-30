@@ -1,0 +1,3 @@
+Hello {{user.username}}
+Welcome to Blogs
+You just signed up to our application

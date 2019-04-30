@@ -1,0 +1,3 @@
+Hello {{user.username}}
+Welcome to the family
+We will keep you posted on the new blogs posted

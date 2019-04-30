@@ -1,0 +1,89 @@
+{% extends 'base.html'%}
+{% import 'macros.html' as macro%}
+
+
+{% block styles%}
+  {{ super() }}
+  <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+  {% endblock %}
+
+  {% block content %}
+
+<div class="container">
+  <button class="btn btn-info">  <a href="/subscribe">subscribe to get notifications</a></button>
+
+  <div class="row">
+    
+    <h2>Blogs Posted</h2>
+  {% if blogs %}
+    {{macro.displayBlogs(blogs)}}
+    {% else%}
+    <h3 class="text-center">No blogs posted </h3>
+    {% endif %}
+
+
+</div>
+</div>
+{% endblock%}
+
+<div class="container">
+  {% macro displayBlog(blog_list) %}
+    {% for blog in blog_list %}
+    <div class="row">
+
+      <div class="panel panel-info">
+        <div class="panel-heading">
+        <h2> {{ blog.title}} </h2>
+      </div>
+      <div class="panel-body">
+        <p> {{ blog.blog }}</p>
+    </div>
+    <div class="panel-footer">
+
+      <p>Posted time: {{ blog.posted }}</p>
+      <button class="btn btn-info">  <a href="/comment">comment on this blog</a></button>
+  </div>
+  </div>
+</div>
+{% endfor %}
+{% endmacro %}
+{% macro displayComments(comment_list) %}
+  {% for comment in comment_list %}
+  <div class="row">
+  <div class="col-md-6">
+    <div class="panel panel-info">
+    <div class="panel-body">
+      <p> {{ comment.comment }}</p>
+  </div>
+
+</div>
+</div>
+</div>
+{% endfor %}
+{% endmacro %}
+</div>
+
+{% macro displayBlog(blog_list) %}
+  {% for blog in blog_list %}
+  <div class="row">
+
+    <div class="panel panel-info">
+      <div class="panel-heading">
+      <h2> {{ blog.title}} </h2>
+    </div>
+    <div class="panel-body">
+      <p> {{ blog.blog }}</p>
+  </div>
+  <div class="panel-footer">
+
+    <p>Posted time: {{ blog.posted }}</p>
+    <button class="btn btn-info">  <a href="/updateblog">update this blog</a></button>
+
+    <button class="btn btn-info">  <a href="/delete">delete this blog</a></button>
+    <button class="btn btn-info">  <a href="/view comments">View comments for this blog</a></button>
+
+</div>
+{% endfor %}
+{% endmacro %}
+</div>
+</div>
